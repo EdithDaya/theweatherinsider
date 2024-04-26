@@ -24,7 +24,7 @@ class _HomeScreenState extends State<StatefulWidget> {
 
 Future<void> _fetchWeatherData(String location) async {
     // Replace 'YOUR_API_KEY' with your actual API key
-    String apiKey = '55bb934e4002a29570a751cbef833e44';
+    String apiKey = 'YOUR WEATHER API KEY';
     String apiUrl =
         'http://api.openweathermap.org/data/2.5/forecast?q=$location&appid=$apiKey';
     try {
@@ -273,5 +273,5 @@ void main() {
   runApp(MaterialApp(
     home: HomeScreen(),
   ));
-//AIzaSyCaATVByr1YV5-kR1FdiCNEogdphHDOuUY
+//
 }
