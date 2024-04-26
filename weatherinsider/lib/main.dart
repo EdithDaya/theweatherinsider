@@ -12,6 +12,6 @@ void main() async {
 
   // Run the app with the RegisterScreen as the home
   runApp(MaterialApp(
-    home: HomeScreen(),
+    home: WelcomeScreen(),
   ));
 }
