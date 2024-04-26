@@ -150,123 +150,120 @@ Future<void> _fetchWeatherData(String location) async {
         ],
       ),
 body: Stack(
-        children: [
-          Container(
+  children: [
+    Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'assets/images/background3.jpg'), // Change path to your image asset
+          fit: BoxFit.cover,
+        ),
+      ),
+    ),
+    Column(
+      children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                    'assets/images/background3.jpg'), // Change path to your image asset
-                fit: BoxFit.cover,
-              ),
+              color: Color.fromARGB(255, 232, 97, 39).withOpacity(0.1),
+              borderRadius: BorderRadius.circular(10.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3),
+                ),
+              ],
             ),
-          ),
-          Column(
-            children: [
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.all(16.0),
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 232, 97, 39).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3),
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.white.withOpacity(0.5),
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: TextField(
+                    controller: _locationController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter location',
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {
+                          _fetchWeatherData(_locationController.text);
+                        },
                       ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        color: Colors.white.withOpacity(0.5),
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: TextField(
-                          controller: _locationController,
-                          decoration: InputDecoration(
-                            hintText: 'Enter location',
-                            suffixIcon: IconButton(
-                              icon: Icon(Icons.search),
-                              onPressed: () {
-                                _fetchWeatherData(_locationController.text);
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            _weatherIcon, // Use your weather icon here
-                            style: TextStyle(fontSize: 70.0),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            '$_temperature°F',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            _weatherData,
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20.0),
-                      // Hourly forecast
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10.0),
-                        height: 120.0,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _hourlyTemperatures.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    _hourlyTimes[index],
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(height: 5.0),
-                                  Text(
-                                    '${_hourlyTemperatures[index]}°F',
-                                    style: TextStyle(fontSize: 16.0),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      // Daily forecast
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: _forecastTemperatures.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(
-                                  ' ${_forecastDayNames[index]}: ${_forecastTemperatures[index]}°F'),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20.0),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _weatherIcon, // Use your weather icon here
+                      style: TextStyle(fontSize: 70.0),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      '$_temperature°F',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      _weatherData,
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20.0),
+                // Hourly forecast
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  height: 120.0,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _hourlyTemperatures.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              _hourlyTimes[index],
+                              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 5.0),
+                            Text(
+                              '${_hourlyTemperatures[index]}°F',
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                // Daily forecast
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _forecastTemperatures.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                            ' ${_forecastDayNames[index]}: ${_forecastTemperatures[index]}°F'),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
+    ),
+  ],
+),
 
     );
   }
