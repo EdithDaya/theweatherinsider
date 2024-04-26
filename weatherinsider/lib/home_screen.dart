@@ -149,7 +149,7 @@ Future<void> _fetchWeatherData(String location) async {
           ),
         ],
       ),
-      body: Stack(
+body: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
@@ -214,13 +214,15 @@ Future<void> _fetchWeatherData(String location) async {
                             _weatherData,
                             style: TextStyle(fontSize: 20.0),
                           ),
-                          
                         ],
                       ),
                       SizedBox(height: 20.0),
-                       Expanded(
+                      // Hourly forecast
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        height: 120.0,
                         child: ListView.builder(
-                          // scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis.horizontal,
                           itemCount: _hourlyTemperatures.length,
                           itemBuilder: (context, index) {
                             return Padding(
@@ -245,8 +247,7 @@ Future<void> _fetchWeatherData(String location) async {
                           },
                         ),
                       ),
-                      SizedBox(height: 20.0),
-                      // Forecast temperatures...
+                      // Daily forecast
                       Expanded(
                         child: ListView.builder(
                           itemCount: _forecastTemperatures.length,
@@ -258,7 +259,6 @@ Future<void> _fetchWeatherData(String location) async {
                           },
                         ),
                       ),
-                     
                     ],
                   ),
                 ),
@@ -267,6 +267,7 @@ Future<void> _fetchWeatherData(String location) async {
           ),
         ],
       ),
+
     );
   }
 }
