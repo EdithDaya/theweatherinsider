@@ -8,7 +8,7 @@ class RadarMapScreen extends StatefulWidget {
 }
 
 class _RadarMapScreenState extends State<RadarMapScreen> {
-  String apiKey = 'AIzaSyCaATVByr1YV5-kR1FdiCNEogdphHDOuUY';
+  String apiKey = 'YOUR GOOGLE APIKEY';
 
   Future<void> fetchRadarData() async {
     final response = await http.get(
@@ -50,5 +50,5 @@ void main() {
   runApp(MaterialApp(
     home:RadarMapScreen(),
   ));
-  //AIzaSyCaATVByr1YV5-kR1FdiCNEogdphHDOuUY
+  //
 }
