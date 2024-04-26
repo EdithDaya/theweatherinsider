@@ -7,8 +7,18 @@ environment:
   sdk: '>=3.2.5 <4.0.0'
 
 dependencies:
+  http: ^0.13.3
+  webview_flutter: ^3.0.0
+  cloud_firestore: ^4.15.8
+  firebase_auth: ^4.17.8
+  firebase_core: ^2.27.0
   flutter:
     sdk: flutter
+  google_maps_flutter: ^2.5.3
+  weather_icons: ^3.0.0
+  flutter_map: ^4.0.0
+  flutter_map_marker_cluster: ^1.1.1
+  flutter_map_location_marker: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +27,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/background3.jpg
+    - assets/images/background2.jpg
+    - assets/images/background2.jpg
+    - assets/images/background.jpg
+  
