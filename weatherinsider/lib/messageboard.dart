@@ -9,7 +9,7 @@ class MessageBoardScreen extends StatelessWidget {
 
   final TextEditingController _messageController = TextEditingController();
 
-void _postMessage(BuildContext context) async {
+  void _postMessage(BuildContext context) async {
     String message = _messageController.text;
     if (message.isNotEmpty) {
       try {
@@ -63,8 +63,6 @@ void _postMessage(BuildContext context) async {
       }
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
