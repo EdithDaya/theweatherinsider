@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:weatherinsider/messageboard.dart';
 import 'dart:convert';
 
 import 'package:weatherinsider/profile_screen.dart';
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<StatefulWidget> {
 
 Future<void> _fetchWeatherData(String location) async {
     // Replace 'YOUR_API_KEY' with your actual API key
-    String apiKey = '55bb934e4002a29570a751cbef833e44';
+    String apiKey = '1ce2eb8a279fd676bab7caa5f9937ad0';
     String apiUrl =
         'http://api.openweathermap.org/data/2.5/forecast?q=$location&appid=$apiKey';
     try {
@@ -118,7 +119,7 @@ Future<void> _fetchWeatherData(String location) async {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather App'),
+        title: Text('Weather'),
         actions: [
           IconButton(
             icon: Icon(Icons.person),
@@ -147,6 +148,17 @@ Future<void> _fetchWeatherData(String location) async {
               );
             },
           ),
+  IconButton(
+            icon: Icon(Icons.map),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MessageBoardScreen("weatherInsider")),
+              );
+            },
+          ),
+
         ],
       ),
 body: Stack(
